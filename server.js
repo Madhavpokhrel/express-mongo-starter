@@ -11,7 +11,8 @@ const db = mongoose.connection;
 //___________________
 // Allow use of Heroku's port or your own local port, depending on the environment
 const PORT = process.env.PORT || 3000;
-
+//importing controller
+const bookRouter  = require('./router/bookRouter')
 //___________________
 //Database
 //___________________
@@ -39,7 +40,7 @@ db.on('open' , ()=>{});
 
 //use public folder for static assets
 app.use(express.static('public'));
-
+app.use('/book',bookRouter)
 // populates req.body with parsed info from forms - if no data from forms will return an empty object {}
 app.use(express.urlencoded({ extended: false }));// extended: false - does not allow nested objects in query strings
 app.use(express.json());// returns middleware that only parses JSON - may or may not need it depending on your project
