@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include ('./partials/head.ejs') %>
+  </head>
+  <body>
+    <nav>
+      <%- include ('./partials/nav.ejs') %>
+    </nav>
+    <div class="container">
+      <h1> New Book Page</h1>
+      <form action="/book/create" method="POST">
+
+        <label for="name">Book Name:</label>
+        <input type="text" name="name" required />
+
+        <label for="author">Author Name:</label>
+        <input type="text" name="author" />
+
+        <label for="isbn">ISBN:</label>
+        <input type="text" name="isbn" />
+
+        <label for="img">Book Image Link:</label>
+        <input type="text" name="img" />
+
+        <br/>
+        <br>
+        <input type="submit" value="Submit">
+      <form>
+    </div>
+
+    <footer>
+      <nav>
+        <%- include ('./partials/footer.ejs') %>
+      </nav>
+    </footer>
+  </body>
+</html>

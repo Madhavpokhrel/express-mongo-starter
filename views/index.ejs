@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include ('./partials/head.ejs') %>
+  </head>
+  <body>
+    <nav>
+      <%- include ('./partials/nav.ejs') %>
+    </nav>
+    <div class="container">
+
+      <h1>Books Index Page</h1>
+      <ul>
+        <% for (let book of books ) { %>
+          <li>
+            <a href="/book/show/<%=book._id%>">
+              <%= book.name %>
+          </li>
+       <% } %>
+       <%if(books.length < 1){%>
+        <p>There is no book in library </p>
+       <% } %>
+      </ul>
+    </div>
+
+    <footer>
+      <nav>
+        <%- include ('./partials/footer.ejs') %>
+      </nav>
+    </footer>
+  </body>
+
+</html>

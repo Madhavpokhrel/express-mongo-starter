@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <%- include ('./partials/head.ejs') %>
+  </head>
+  <body>
+    <nav>
+      <%- include ('./partials/nav.ejs') %>
+    </nav>
+    <div class="container">
+      <h1>Book Show Page</h1>
+
+      The <%=book.name%>.
+
+      <button type="button" name="button">
+        <a href="/book">Back</a>
+      </button>
+    </div>
+
+    <footer>
+      <nav>
+        <%- include ('./partials/footer.ejs') %>
+      </nav>
+    </footer>
+  </body>
+</html>
