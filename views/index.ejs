@@ -10,7 +10,7 @@
     <div class="container">
 
       <h1>Books Index Page</h1>
-      <ul>
+      <ol>
         <% for (let book of books ) { %>
           <li>
             <a href="/book/show/<%=book._id%>">
@@ -20,7 +20,7 @@
        <%if(books.length < 1){%>
         <p>There is no book in library </p>
        <% } %>
-      </ul>
+     </ol>
     </div>
 
     <footer>
