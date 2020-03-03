@@ -7,6 +7,15 @@ bookRouter.get('/new', (req, res) => {
   res.render('new.ejs')
 })
 
+//DELETE
+bookRouter.get('/delete/:id', (req, res)=>{
+      bookModel.findByIdAndDelete(req.params.id)
+      .then(deleted=>{
+          res.redirect('/book')
+      })
+  })
+
+
 // SHOW PAGE
 bookRouter.get('/show/:id', (req, res) => {
   console.log(req.params)

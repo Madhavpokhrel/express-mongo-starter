@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <%- include ('./partials/head.ejs') %>
-  </head>
-  <body>
-    <nav>
-      <%- include ('./partials/nav.ejs') %>
-    </nav>
-    <div class="container">
-      <h1>Book Show Page</h1>
-      The <%=book.name%> is Created by <%=book.author%>.
-      <br/>
-      <button type="button" name="button"><a href="/book/edit/<%=book._id%>">Edit</a></button>
-      <br>
-      <br>
-      <form action="/book/delete/<%=book._id%>?_method=DELETE" method="GET">
-        <input type="submit" value="DELETE"/>
-      </form>
-      <br>
-      <button type="button" name="button">
-        <a href="/book">Back</a>
-      </button>
-    </div>
 
-    <footer>
-      <nav>
-        <%- include ('./partials/footer.ejs') %>
-      </nav>
-    </footer>
-  </body>
+<head>
+  <%- include ('./partials/head.ejs') %>
+</head>
+
+<body>
+  <nav>
+    <%- include ('./partials/nav.ejs') %>
+  </nav>
+  <div class="container">
+    <h1>Book Show Page</h1>
+    The <%=book.name%> is Created by <%=book.author%>.
+    <br />
+    <button type="button" name="button"><a href="/book/edit/<%=book._id%>">Edit</a></button>
+    <br>
+    <br>
+    <form action="/book/delete/<%=book._id%>?_method=DELETE" method="GET">
+      <input type="submit" value="DELETE" />
+    </form>
+    <br>
+    <button type="button" name="button">
+      <a href="/book">Back</a>
+    </button>
+  </div>
+
+  <footer>
+    <nav>
+      <%- include ('./partials/footer.ejs') %>
+    </nav>
+  </footer>
+</body>
+
 </html>
