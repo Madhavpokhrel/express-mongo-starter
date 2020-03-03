@@ -7,6 +7,17 @@ bookRouter.get('/new', (req, res) => {
   res.render('new.ejs')
 })
 
+//edit
+bookRouter.get('/edit/:id', (req, res) => {
+    console.log(req.params.id)
+    bookModel.findById(req.params.id, (error, book) => {
+        console.log(book)
+      res.render('edit.ejs', {
+        book: book
+    })
+    })
+  })
+
 //DELETE
 bookRouter.get('/delete/:id', (req, res)=>{
       bookModel.findByIdAndDelete(req.params.id)
@@ -14,7 +25,6 @@ bookRouter.get('/delete/:id', (req, res)=>{
           res.redirect('/book')
       })
   })
-
 
 // SHOW PAGE
 bookRouter.get('/show/:id', (req, res) => {
@@ -25,6 +35,20 @@ bookRouter.get('/show/:id', (req, res) => {
     })
   })
 })
+
+//Update
+bookRouter.put('/edit/:id', (req, res) => {
+    console.log(req.body)
+    bookModel.findByIdAndUpdate( req.params.id,{...req.body},{ new: true },
+      (error, updatedModel) => {
+        if(error){
+            console.log(error)
+        }
+        console.log(updatedModel)
+        res.redirect('/book')
+      }
+    )
+  })
 
 // Create
 bookRouter.post('/create', (req, res) => {
@@ -49,7 +73,7 @@ bookRouter.get('/', (req, res) => {
 bookRouter.get(
   '/dropdatabase/cannotundo/areyoursure/reallysure/okthen',
   (req, res) => {
-    bookRouter.collection.drop()
+    bookModel.collection.drop()
     res.send('You did it! You dropped the database!')
   }
 )
