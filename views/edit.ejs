@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
   <%- include ('./partials/head.ejs') %>
 </head>
+
 <body>
   <nav>
     <%- include ('./partials/nav.ejs') %>
@@ -25,15 +27,18 @@
 
       <br />
       <br>
-      <input type="submit" value="Update">
+
+      <div class="card-action d-flex">
+
+        <input class="btn btn-info" type="submit" value="Update">
     </form>
-    <button type="button" name="button">
-      <a href="/book">Back</a>
+    <button class="btn btn-success" type="button" name="button">
+      <a style="color: white;" href="/book">Back</a>
     </button>
   </div>
 
   <!-- footer from partials/footer.ejs -->
-    <%- include ('./partials/footer.ejs') %>
+  <%- include ('./partials/footer.ejs') %>
 </body>
 
 </html>

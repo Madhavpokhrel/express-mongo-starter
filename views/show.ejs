@@ -9,21 +9,34 @@
   <nav>
     <%- include ('./partials/nav.ejs') %>
   </nav>
-  <div class="container">
-    <h1>Book Show Page</h1>
-      <%=book.name%>.
-    <br />
-    <button type="button" name="button"><a href="/book/edit/<%=book._id%>">Edit</a></button>
-    <br>
-    <br>
-    <form action="/book/delete/<%=book._id%>?_method=DELETE" method="GET">
-      <input type="submit" value="DELETE" />
-    </form>
-    <br>
-    <button type="button" name="button">
-      <a href="/book">Back</a>
-    </button>
-  </div>
+  <div class="container mt-5"style="min-height: 550px;">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 s12 m7">
+        <div class="card">
+        <div class="card-content">
+
+          <div class="card-image">
+            <img style="max-height: 200px;max-width: 400px;" src="<%=book.img %> ">
+          </div>
+
+          <span class="card-title"> Book Name: <%=book.name%>. </span>
+          <p >ID :<%=book._id%>.</p>
+          <p >Author Name : <%=book.author%>.</p>
+          <p >ISBN : <%=book.isbn%>.</p>
+        </div>
+          <div class="card-action d-flex">
+            <form action="/book/delete/<%=book._id%>?_method=DELETE" method="GET">
+              <input class="btn mr-2 btn-danger" type="submit" value="DELETE"/>
+            </form>
+            <button class=" mr-2 btn btn-warning" type="button" name="button"><a href="/book/edit/<%=book._id%>">Edit</a></button>
+            <button class=" mr-2 btn btn-success" type="button" name="button"><a href="/book">Back</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    </div>
 
   <!-- footer from partials/footer.ejs -->
     <%- include ('./partials/footer.ejs') %>

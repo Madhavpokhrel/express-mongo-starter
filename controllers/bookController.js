@@ -9,22 +9,22 @@ bookRouter.get('/new', (req, res) => {
 
 //edit
 bookRouter.get('/edit/:id', (req, res) => {
-    console.log(req.params.id)
-    bookModel.findById(req.params.id, (error, book) => {
-        console.log(book)
-      res.render('edit.ejs', {
-        book: book
-    })
+  console.log(req.params.id)
+  bookModel.findById(req.params.id, (error, book) => {
+    // console.log(book)
+    res.render('edit.ejs', {
+      book: book
     })
   })
+})
 
 //DELETE
-bookRouter.get('/delete/:id', (req, res)=>{
-      bookModel.findByIdAndDelete(req.params.id)
-      .then(deleted=>{
-          res.redirect('/book')
-      })
-  })
+bookRouter.get('/delete/:id', (req, res) => {
+  bookModel.findByIdAndDelete(req.params.id)
+    .then(deleted => {
+      res.redirect('/book')
+    })
+})
 
 // SHOW PAGE
 bookRouter.get('/show/:id', (req, res) => {
@@ -38,17 +38,21 @@ bookRouter.get('/show/:id', (req, res) => {
 
 //Update
 bookRouter.put('/edit/:id', (req, res) => {
-    console.log(req.body)
-    bookModel.findByIdAndUpdate( req.params.id,{...req.body},{ new: true },
-      (error, updatedModel) => {
-        if(error){
-            console.log(error)
-        }
-        console.log(updatedModel)
-        res.redirect('/book')
+  console.log(req.body)
+  bookModel.findByIdAndUpdate(req.params.id, {
+      ...req.body
+    }, {
+      new: true
+    },
+    (error, updatedModel) => {
+      if (error) {
+        console.log(error)
       }
-    )
-  })
+      console.log(updatedModel)
+      res.redirect('/book')
+    }
+  )
+})
 
 // Create
 bookRouter.post('/create', (req, res) => {
