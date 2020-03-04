@@ -2,9 +2,9 @@
 //Dependencies
 //___________________
 const express = require('express');
-const methodOverride  = require('method-override');
-const mongoose = require ('mongoose');
-const app = express ();
+const methodOverride = require('method-override');
+const mongoose = require('mongoose');
+const app = express();
 const db = mongoose.connection;
 //___________________
 //Port
@@ -18,15 +18,20 @@ const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/ohmycrud';
 
 // Connect to Mongo
-mongoose.connect(MONGODB_URI ,  { useNewUrlParser: true});
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true
+});
 
 // Error / success
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
 db.on('connected', () => console.log('MongoDB connected: ', MONGODB_URI));
 db.on('disconnected', () => console.log('mongo disconnected'));
-mongoose.connect(MONGODB_URI ,  { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 // open the connection to mongo
-db.on('open' , ()=>{});
+db.on('open', () => {});
 //___________________
 //Middleware
 // app.use(methodOverride('_method'))
@@ -45,20 +50,21 @@ const bookController = require('./controllers/bookController')
 
 app.use(express.static('public'));
 // populates req.body with parsed info from forms - if no data from forms will return an empty object {}
-app.use(express.urlencoded({ extended: false }));// extended: false - does not allow nested objects in query strings
-app.use(express.json());// returns middleware that only parses JSON - may or may not need it depending on your project
+app.use(express.urlencoded({
+  extended: false
+})); // extended: false - does not allow nested objects in query strings
+app.use(express.json()); // returns middleware that only parses JSON - may or may not need it depending on your project
 
 //use method override
-app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
-app.use('/book',bookController)
+app.use(methodOverride('_method')); // allow POST, PUT and DELETE from a form
+app.use('/book', bookController)
 //___________________
 // Routes
 //___________________
 //localhost:3000
-app.get('/' , (req, res) => {
+app.get('/', (req, res) => {
   res.redirect('/book')
 });
-
 
 
 //___________________

@@ -1,5 +1,4 @@
-
-  <!-- <body>
+<!-- <body>
     <div class="container">
 
       <h1>Books Index Page</h1>
@@ -19,31 +18,35 @@
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <%- include ('./partials/head.ejs') %>
-  </head>
-  <body  >
-    <nav>
-      <%- include ('./partials/nav.ejs') %>
-    </nav>
-    <div class="container"style="min-height: 550px;">
 
-      <h1>Books Index Page</h1>
+<head>
+  <%- include ('./partials/head.ejs') %>
+</head>
+
+<body>
+  <nav>
+    <%- include ('./partials/nav.ejs') %>
+  </nav>
+
+  <div class="container" style="min-height: 550px;">
+
+    <h1>Books Index Page</h1>
 
     <ol class="collection">
-        <% for (let book of books ) { %>
-          <li>
-            <a  class="collection-item" href="/book/show/<%=book._id%>">
-              <%= book.name %>
-          </li>
-       <% } %>
-       <%if(books.length < 1){%>
-        <p>There is no book in library </p>
-       <% } %>
+      <% for (let book of books ) { %>
+      <li>
+        <a class="collection-item" href="/book/show/<%=book._id%>">
+          <%= book.name %>
+      </li>
+      <% } %>
+      <%if(books.length < 1){%>
+      <p>There is no book in library </p>
+      <% } %>
     </ol>
   </div>
 
 
-    <%- include ('./partials/footer.ejs') %>
-  </body>
+  <%- include ('./partials/footer.ejs') %>
+</body>
+
 </html>
